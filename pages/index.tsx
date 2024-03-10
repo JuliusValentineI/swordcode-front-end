@@ -1,36 +1,12 @@
 import { getArticle } from "../utils/services";
 import { Header } from "../components/header/index";
+import { Footer } from "../components/footer/index";
 import Link from "next/link";
+import formatDate from "@/utils/formatDate";
 
 const apiURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home({ articlesList = {} }) {
-  // Formating dates for articles
-  function formatDate(dateString: string) {
-    const date = new Date(dateString);
-
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-
-    const monthNames = [
-      "ene",
-      "feb",
-      "mar",
-      "abr",
-      "may",
-      "jun",
-      "jul",
-      "ago",
-      "sep",
-      "oct",
-      "dic",
-    ];
-    const month = monthNames[monthIndex];
-    const year = date.getFullYear();
-
-    return `${day} ${month} ${year}`;
-  }
-
   return (
     <main>
       <div className=" font-serif">
@@ -74,6 +50,7 @@ export default function Home({ articlesList = {} }) {
             {/* Notas -> Repository */}
           </div>
         </div>
+        <Footer />
       </div>
     </main>
   );
